@@ -6,29 +6,139 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script type="text/javascript">
 
-	$(function() {
-		$( "td.ct_btn01:contains('이전')" ).on("click" , function() {
-		//Debug..
-		//alert(  $( "td.ct_btn01:contains('이전')" ).html() );
-		history.go(-1);
-		});
-		
-		$( "td.ct_btn01:contains('구매')" ).on("click" , function() {
-			//Debug..
-			alert(  $( "td.ct_btn01:contains('구매')" ).html() );
-			self.location = "/purchase/addPurchase?prodNo=${product.prodNo}";
-		});
-	});
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />	
+	<link href="/css/creative.css" rel="stylesheet" >				
+	<link rel="stylesheet" href="/css/admin.css" type="text/css">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
+   
+   	<style>
+ 		body {
+            padding-top : 100px;
+        }
+     </style>   
+	
+	<script type="text/javascript">
+	
+		$(function() {
+			$( ".btn.btn-info:contains('이전')" ).on("click" , function() {
+				self.location = "/product/updateProduct?prodNo=${product.prodNo}";
+			});
 			
-</script>
+			$( ".btn.btn-info:contains('구매')" ).on("click" , function() {
+				//Debug..
+				alert(  $( "td.ct_btn01:contains('구매')" ).html() );
+				self.location = "/purchase/addPurchase?prodNo=${product.prodNo}";
+			});
+		});
+				
+	</script>
 
 </head>
 
-<body bgcolor="#ffffff" text="#000000">
+<body >
+	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+						</button>
+						<a class="navbar-brand page-scroll" href="#page-top">Model 2 MVC Shop</a>
+				</div>
+						
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+						    <a class="page-scroll" href="#services">Services</a>
+						</li>
+						<li>
+						    <a class="page-scroll" href="#portfolio">Menu</a>
+						</li>
+						<li>
+							<a class="login"> Login </a>
+						</li>
+						<li>
+							<a class="join">Join </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		<div class="container">
+			<div class="page-header">
+		       <h3 class=" text-info">상품상세조회</h3>
+		       <h5 class="text-muted">수정한 상품정보입니다</h5>
+			</div>
+			
+			<div class="row">
+		  		<div class="col-xs-4 col-md-2"><strong>상품번호</strong></div>
+					<div class="col-xs-8 col-md-4">${product.prodNo}</div>
+			</div>	
+			
+			<hr/>
+		
+			<div class="row">
+		  		<div class="col-xs-4 col-md-2"><strong>상품명</strong></div>
+					<div class="col-xs-8 col-md-4">${product.prodName}</div>
+			</div>	
+			
+			<hr/>
+		
+			<div class="row">
+		  		<div class="col-xs-4 col-md-2"><strong>상품이미지</strong></div>
+					<div class="col-xs-8 col-md-4">${product.fileName}</div>
+			</div>	
+
+			<hr/>
+		
+			<div class="row">
+		  		<div class="col-xs-4 col-md-2"><strong>상품 상세정보</strong></div>
+					<div class="col-xs-8 col-md-4">${product.prodDetail}</div>
+			</div>	
+
+			<hr/>		
+		
+			<div class="row">
+		  		<div class="col-xs-4 col-md-2"><strong>상품 제조일자</strong></div>
+					<div class="col-xs-8 col-md-4">${product.manuDate}</div>
+			</div>		
+			
+			<hr/>
+			
+			<div class="row">
+		  		<div class="col-xs-4 col-md-2"><strong>상품가격</strong></div>
+					<div class="col-xs-8 col-md-4">${product.price}</div>
+			</div>	
+	
+			<hr/>	
+			
+			<div class="row">
+		  		<div class="col-xs-4 col-md-2"><strong>상품등록일자</strong></div>
+					<div class="col-xs-8 col-md-4">${product.regDate}</div>
+			</div>	
+			
+			<hr/>
+			
+			<div class="row">
+		  		<div class="col-md-12 text-center ">
+		  			<button type="button" class="btn btn-info" id="purchase"> 구매</button>
+		  			<button type="button" class="btn btn-info" id="back">이전</button>
+		  		</div>
+			</div>
+		
+		<br/>	
+			
+	</div>
+		
+		
+		<%-- 
+		
 
 <form name="detailForm" method="post">
 
@@ -139,7 +249,7 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-					<%-- <a href="/purchase/addPurchase?prodNo=${product.prodNo}">구매</a> --%>
+					<a href="/purchase/addPurchase?prodNo=${product.prodNo}">구매</a>
 					구매
 				</td>
 				<td width="14" height="23">
@@ -164,6 +274,6 @@
 	</tr>
 </table>
 </form>
-
+ --%>
 </body>
 </html>

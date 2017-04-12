@@ -124,4 +124,8 @@
 			$(self.location).attr("href","/user/getUser?userId=${sessionScope.user.userId}");
 		});
 		
+		
+		
+		
+		
 	</script>  

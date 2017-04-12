@@ -11,17 +11,11 @@
 		<link href="/css/creative.css" rel="stylesheet" >
 					
 		 <link rel="stylesheet" href="/css/admin.css" type="text/css">		
-		
-<!-- 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/base/jquery-ui.css">
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-		  <link rel="stylesheet" href="/resources/demos/style.css">
-		 -->
+
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-		<sctipt src="http://malsup.github.com/jquery.form.js"></sctipt>		
+		<script src="http://malsup.github.com/jquery.form.js"></script>		
 		
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/overcast/jquery-ui.css">
-  	<!-- 	<link rel="stylesheet" href="/resources/demos/style.css"> -->
   		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
@@ -68,24 +62,7 @@
 				});
 				$("#detailForm").submit();
 			}
-			/////////////////////////////////////////////////////////////////////////////////////////
-		
-/* 				$(function() {
-					$("img[src='../images/ct_icon_date.gif']").on("click",function(){
-					    show_calendar('document.detailForm.manuDate', $("img[src='../images/ct_icon_date.gif']").val());
-					 });
-				}); */
-		/* 	
-			$("img[src='../images/ct_icon_date.gif']").on("click",function(){
-		// ->img태그중 src속성값이 ../image어쩌구 인놈을 select 
-			
-		// ->click이벤트를 받아들임 
-			
-					show_calendar('document.detailForm.manuDate', $("img[src='../images/ct_icon_date.gif']").val());
-			 }); */
-		//->show_calendar라고 정의된 javascript를 불러서 그게 요구하는 대상과 대상의 값을 전달 */
-			//////////////////////////////////////////////////////////////////////////////////////////
-						
+							
 			$(function() {
 				 $( "button.btn.btn-info" ).on("click" , function() {
 			
@@ -100,9 +77,7 @@
 			////// 달력 UI 
 			$(function() {
 				$( "#manuDate" ).datepicker({
-						dateFormat: "yy-mm-dd",
-					   /*  monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-					    dayNamesMin: ['일','월','화','수','목','금','토']  */
+						dateFormat: "yy-mm-dd"
 				});
 			});
 
@@ -188,139 +163,5 @@
 		</form>	
 	</div>
    	
-<!-- 
- <form name="detailForm" >
-<form name="detailForm" enctype="multipart/form-data" > 
-
-<table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
-	<tr>
-		<td width="15" height="37">
-			<img src="/images/ct_ttl_img01.gif" width="15" height="37"/>
-		</td>
-		<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td width="93%" class="ct_ttl01">상품등록</td>
-					<td width="20%" align="right">&nbsp;</td>
-				</tr>
-			</table>
-		</td>
-		<td width="12" height="37">
-			<img src="/images/ct_ttl_img03.gif"	width="12" height="37"/>
-		</td>
-	</tr>
-</table>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top: 13px;">
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			상품명 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td width="105">
-						<input type="text" name="prodName" class="ct_input_g" 
-									style="width: 100px; height: 19px" maxLength="20">
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			상품상세정보 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
-			<input type="text" name="prodDetail" class="ct_input_g" 
-						style="width: 100px; height: 19px" maxLength="10" minLength="6"/>
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			제조일자 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
-			<input type="text" name="manuDate" readonly="readonly" class="ct_input_g"  
-						style="width: 100px; height: 19px"	maxLength="10" minLength="6"/>
-				&nbsp;<img src="../images/ct_icon_date.gif" width="15" height="15" />
-										onclick="show_calendar('document.detailForm.manuDate', document.detailForm.manuDate.value)"/>
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			가격 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
-			<input type="text" name="price" 	class="ct_input_g" 
-						style="width: 100px; height: 19px" maxLength="10">&nbsp;원
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">상품이미지</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
- 			<input		type="text" name="fileName" class="ct_input_g" 
-							style="width: 200px; height: 19px" maxLength="13"/>
-					<input		type="file" name="fileName" class="ct_input_g" 
-							style="width: 200px; height: 19px" maxLength="13" onClick="javasc"/>  
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-</table>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top: 10px;">
-	<tr>
-		<td width="53%"></td>
-		<td align="right">
-		<table border="0" cellspacing="0" cellpadding="0">
-			<tr>
-				<td width="17" height="23">
-					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
-				</td>
-				<td background="/images/ct_btnbg02.gif" class="ct_btn01"  style="padding-top: 3px;">
-					<a href="javascript:fncAddProduct();">등록</a>
-				</td>
-				<td width="14" height="23">
-					<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
-				</td>
-				<td width="30"></td>
-				<td width="17" height="23">
-					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
-				</td>
-				<td background="/images/ct_btnbg02.gif" class="ct_btn01"	 style="padding-top: 3px;">
-					<a href="javascript:resetData();">취소</a>
-				</td>
-				<td width="14" height="23">
-					<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
-				</td>
-			</tr>
-		</table>
-		</td>
-	</tr>
-</table>
-
-</form> -->
 </body>
 </html>

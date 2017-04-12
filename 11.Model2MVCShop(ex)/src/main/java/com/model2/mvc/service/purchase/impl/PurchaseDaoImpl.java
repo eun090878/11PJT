@@ -37,6 +37,7 @@ public class PurchaseDaoImpl {
 	}
 	
 	public Purchase findPurchase(int tranNo) throws Exception{
+		System.out.println("::::::::::::::::::tranNo" + tranNo);
 		return sqlSession.selectOne("PurchaseMapper.getPurchase", tranNo);
 	}
 	
@@ -48,15 +49,21 @@ public class PurchaseDaoImpl {
 		map.put("buyerId", buyerId);
 		
 		List<Purchase> list = sqlSession.selectList("PurchaseMapper.getPurchaseList", map);
+		System.out.println("listsssssss" + list);
 		
 		for (int i = 0; i < list.size(); i++) {
 			list.get(i).setBuyer((User)sqlSession.selectOne("UserMapper.getUser", list.get(i).getBuyer().getUserId()));
+			System.out.println("dd");
 			list.get(i).setPurchaseProd((Product)sqlSession.selectOne("ProductMapper.getProduct", list.get(i).getPurchaseProd().getProdNo()));
+			System.out.println("dddd");
 		}
-		
+		System.out.println("Àü");
 		map.put("totalCount", sqlSession.selectOne("PurchaseMapper.getTotalCount", buyerId));
+		System.out.println("ÈÄ");
+		
 
 		map.put("list", list);
+		System.out.println("ma");
 
 		return map;
 		

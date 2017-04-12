@@ -55,17 +55,6 @@ public class ProductController {
 	}
 	
 //	@RequestMapping("/addProduct.do")
-/*	@RequestMapping( value="addProduct", method=RequestMethod.POST )
-	public String addProduct( @ModelAttribute("product") Product product ) throws Exception {
-		
-		System.out.println("/product/addProduct : POST");
-		
-		productService.addProduct(product);
-		
-		return "forward:/product/getProduct.jsp";
-	}
-	*/
-//	@RequestMapping("/addProduct.do")
 	@RequestMapping(value="addProduct", method=RequestMethod.POST)
 	   public String addProduct(@ModelAttribute("product") Product product,HttpSession session ) throws Exception{
 	  
@@ -83,9 +72,7 @@ public class ProductController {
 	      
 	      return "forward:/product/getProduct.jsp";
 	   }
-	
-	
-	
+		
 //	@RequestMapping("/getProduct.do")
 	@RequestMapping( value="getProduct", method=RequestMethod.GET )
 	public String getProduct( @RequestParam("prodNo") int prodNo,  @RequestParam("menu") String menu, Model model) throws Exception {
@@ -100,11 +87,9 @@ public class ProductController {
 			return "forward:/product/updateProductView.jsp";
 		} else {
 			return "forward:/product/readProduct.jsp";
-		}
-		
+		}		
 	}
-	
-	
+		
 //	@RequestMapping("/getProduct")
 	@RequestMapping( value="getJSONProduct/{prodNo}/{menu}", method=RequestMethod.GET )
 	public void getJSONProduct( @PathVariable("prodNo") int prodNo,  
@@ -116,17 +101,11 @@ public class ProductController {
 		
 		model.addAttribute("product", product);
 		
-/*		if( menu.equals("manage")) {
-			return "forward:/product/updateProductView.jsp";
-		} else {
-			return "forward:/product/readProduct.jsp";
-		}*/
-		
 	}
 	
 //	@RequestMapping("/updateProduct.do")
 	@RequestMapping( value="updateProduct", method=RequestMethod.POST)
-	public String updateProduct( @ModelAttribute("productOld") Product product, Model model) throws Exception {
+	public String updateProduct( @ModelAttribute("product") Product product, Model model) throws Exception {
 		
 		System.out.println("상품정보 수정 후 수정된 정보 보여주기");
 		System.out.println("/updateProduct");

@@ -20,7 +20,6 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 		
 		<!-- Bootstrap Dropdown Hover CSS -->
-	   <link href="/css/animate.min.css" rel="stylesheet">
 	   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
 	   
 	    <!-- Bootstrap Dropdown Hover JS -->
@@ -32,7 +31,7 @@
 		
 		<style>
 		  body {
-	            padding-top : 100px;
+	            padding-top : 150px;
 	        }
 	    </style>
 		
@@ -41,7 +40,7 @@
 		//페이지처리
  		function fncGetAllList(currentPage){
 			$("#currentPage").val(currentPage)
-			$("form").attr("method", "POST").attr("action", "/product/listProduct?menu=manage").submit();
+			$("form").attr("method", "POST").attr("action", "/product/listProduct?menu=${param.menu}").submit();
 		 }
  		
  		$(function() {
@@ -53,6 +52,7 @@
 			});	 			 		
  			
 			$( "td:nth-child(2) span" ).on("click" , function() {
+				alert("상품정보 보고싶다")
 				var prodNo = $(this).attr('no').trim();
 				var menu = $(this).attr('menu').trim();
 				 self.location ="/product/getProduct?prodNo="+prodNo+"&menu="+menu;
@@ -101,13 +101,13 @@
 	 		});
 	
  		
-	 		$("td:nth-child(4) span").on("click", function() {	 			
+	 		$("td:nth-child(5) span").on("click", function() {	 			
 	 				var prodNo = $(this).attr('noval').trim();
 	 				var tranCode = $(this).attr('codeval').trim();
 		 			self.location = "/purchase/updateTranCodeByProd?prodNo="+prodNo+"&tranCode="+tranCode;		
 	 		});
 	 		
-	 		$( ".ct_list_pop td:nth-child(3)" ).css("color" , "blue");
+	 		$( " td:nth-child(2)" ).css("color" , "blue");
 			$("h7").css("color" , "blue");
 			
 			$(".ct_list_pop:nth-child(4n+6)" ).css("background-color" , "whitesmoke");
@@ -119,6 +119,8 @@
 </head>
 
 <body>
+
+ 		<jsp:include page="/layout/toolbar.jsp" /> 
 	
 	<div class="container">
 		
@@ -187,7 +189,7 @@
 									  <td align="left">${product.price}</td>
 									  <!--  //// 상품 등록일자 //// -->
 									  <td align="left">${product.regDate}</td>
-									 <%--  <td align="left">${product.regDate}</td> --%>
+									  
 									<td align="left"> <!-- 5 -->
 									  <c:if test="${param.menu =='search' }">
 									  		<c:choose>
