@@ -55,7 +55,7 @@
 		
 </div>
  
-
+<!-- 
 
 <div class="container">
 		<nav>
@@ -70,9 +70,9 @@
 <div class="container">
 		<nav>
 		  <ul class="pager">
-		    <!-- <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li> -->
+		    <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
 		     <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>  
 		    <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
 		  </ul>
 		</nav>
-</div>
+</div> -->

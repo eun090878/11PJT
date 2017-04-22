@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -80,11 +81,6 @@ public class PurchaseController {
 		
 		System.out.println("/addPurchase");
 				
-//		User user = userService.getUser(buyerId);
-//		Product product = productService.getProduct(prodNo);
-		
-//		purchase.setBuyer(user);
-//		purchase.setPurchaseProd(product);
 			purchaseService.addPurchase(purchase);
 				
 		return "forward:/purchase/addPurchase.jsp";
@@ -102,6 +98,17 @@ public class PurchaseController {
 		
 		return "forward:/purchase/getPurchase.jsp";
 		
+	}
+	
+	@RequestMapping( value="getJsonPurchase/{tranNo}", method=RequestMethod.GET )
+	public void getJsonUser(	@PathVariable int tranNo, 
+									 			Model model) throws Exception{
+		
+		System.out.println("/getJsonPurchase/getPurchase : GET");
+		//Business Logic
+		Purchase purchase = purchaseService.getPurchase(tranNo);
+		// Model °ú View ¿¬°á
+		model.addAttribute("purchase", purchase);
 	}
 	
 //	@RequestMapping("/updatePurchase.do")

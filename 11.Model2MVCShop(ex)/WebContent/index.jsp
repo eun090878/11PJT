@@ -31,13 +31,18 @@
 
     <!-- Theme CSS -->
     <link href="/css/creative.min.css" rel="stylesheet">
-   
+     <link href="/css/animate.min.css" rel="stylesheet">
+    
+    		<!-- Bootstrap Dropdown Hover CSS -->
+	   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">	   
+	    <!-- Bootstrap Dropdown Hover JS -->
+	   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]> -->
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<!--         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> -->
   <!--   <![endif]--> 
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -92,17 +97,16 @@
             float: none;
 	}
 	
-	
 	</style>
-
 
 </head>
 
 <body >
-
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+	<jsp:include page="/layout/toolbar.jsp" /> 	
+	
+<!--     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
+            Brand and toggle get grouped for better mobile display
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
@@ -110,13 +114,13 @@
                 <a class="navbar-brand page-scroll" href="#page-top">Model 2 MVC Shop</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
+            Collect the nav links, forms, and other content for toggling
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-<!--                     
+                    
 					<li>
                         <a class="page-scroll" href="#about">About</a>
-                    </li> -->
+                    </li>
                     <li>
                         <a class="page-scroll" href="#services">Services</a>
                     </li>
@@ -136,15 +140,15 @@
                     	<a class="join">Join </a>
                     </li>
                     
-                    <!-- <li>
+                    <li>
                         <a class="page-scroll" href="#contact">Contact</a>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
+            /.navbar-collapse
         </div>
-        <!-- /.container-fluid -->
-    </nav>
+        /.container-fluid
+    </nav> -->
 
     <header>
         <div class="header-content">
@@ -191,21 +195,23 @@
                         <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
                         
                         <h3>User</h3>
-                        <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+                       <!--  <p class="text-muted">개인정보조회 및 수정</p> -->
+                       <!--  <p class="text-muted">Our templates are updated regularly so they don't break.</p> -->
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
                         <h3>Product</h3>
-                        <p class="text-muted">You can use this theme as is, or you can make changes!</p>
+                        <!-- <p class="text-muted">상품검색, 등록 및 수정</p> -->
+                        <!-- <p class="text-muted">You can use this theme as is, or you can make changes!</p> -->
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
                         <h3>Purchase</h3>
-                        <p class="text-muted">We update dependencies to keep things fresh.</p>
+                        <!-- <p class="text-muted">We update dependencies to keep things fresh.</p> -->
                     </div>
                 </div>
 <!--                 <div class="col-lg-3 col-md-6 text-center">
@@ -218,12 +224,13 @@
             </div>
         </div>
     </section>
-
+<!-- 
     <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
                     <a href="/img/portfolio/fullsize/1.jpg" class="portfolio-box">
+                    <a class="portfolio-box">
                         <img src="/img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -238,7 +245,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="/img/portfolio/fullsize/2.jpg" class="portfolio-box">
+                    <a class="portfolio-box">
                         <img src="/img/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -268,7 +275,7 @@
                      </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="/img/portfolio/fullsize/4.jpg" class="portfolio-box">
+                    <a class="portfolio-box">
                         <img src="/img/portfolio/thumbnails/4.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -298,7 +305,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="/img/portfolio/fullsize/6.jpg" class="portfolio-box">
+                    <a class="portfolio-box">
                         <img src="/img/portfolio/thumbnails/6.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -315,7 +322,7 @@
             </div>
         </div>
     </section>
-
+ -->
 <!--     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
@@ -355,6 +362,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="/vendor/scrollreveal/scrollreveal.min.js"></script>
     <script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    
 
     <!-- Theme JavaScript -->
     <script src="/js/creative.min.js"></script>

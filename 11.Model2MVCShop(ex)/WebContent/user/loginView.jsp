@@ -11,18 +11,21 @@
 	
 	<!-- 참조 : http://getbootstrap.com/css/   참조 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="/css/creative.css" rel="stylesheet" >
+	 <link href="/css/animate.min.css" rel="stylesheet">
 	
-	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-	<link href="/css/creative.css" rel="stylesheet" >
+	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
-	<!--  ///////////////////////// CSS ////////////////////////// -->
-<style>
-        body { 
-           /* border: 3px solid #D6CDB7; */
+	 <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   	<script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+	
+	
+	<style>
+        body {           
             margin-top: 100px;
         }
          .col-md-6 {
@@ -75,42 +78,8 @@
 
 <body>
 
-	<!-- ToolBar Start /////////////////////////////////////-->
-<!-- 	<div class="navbar  navbar-default">
-        <div class="container">
-        	<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
-   		</div>
-   	</div> -->
-   	 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Model 2 MVC Shop</a>
-            </div>
+	<jsp:include page="/layout/toolbar.jsp" /> 	
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Menu</a>
-                    </li>
-                    <li>
-                    	<a class="login"> Login </a>
-                    </li>
-                    <li>
-                    	<a class="join">Join </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-   	<!-- ToolBar End /////////////////////////////////////-->	
-	
 	<!--  화면구성 div Start /////////////////////////////////////-->
 	<div class="container">
 		<!--  row Start /////////////////////////////////////-->

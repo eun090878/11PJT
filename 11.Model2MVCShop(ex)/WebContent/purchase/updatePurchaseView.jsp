@@ -3,11 +3,36 @@
 
 <html>
 <head>
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
 <title>구매정보 수정</title>
 
-	<script type="text/javascript" src="../javascript/calendar.js"></script>
-	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<link href="/css/creative.css" rel="stylesheet" >		
+	<link rel="stylesheet" href="/css/admin.css" type="text/css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	
+	<!-- Bootstrap Dropdown Hover CSS -->
+   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">   
+    <!-- Bootstrap Dropdown Hover JS -->
+   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+    <link href="/css/animate.min.css" rel="stylesheet">
+   
+   
+   	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/overcast/jquery-ui.css">
+   	<link rel="stylesheet" href="/resources/demos/style.css"> 
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+   
+	<style>
+ 		body {
+            padding-top : 100px;
+        }
+     </style>
+
 	<script type="text/javascript">
 
 		function fncUpdatePurchase() {
@@ -38,25 +63,131 @@
 		
 		$(function () {
 			//취소 및 수정 처리
-			$("td.ct_btn01:contains('취소')").bind("click", function() {
+			$("#cancle").bind("click", function() {
 				history.go(-1);
 			});		
-			$("td.ct_btn01:contains('수정')").bind("click", function() {
+			$("#update").bind("click", function() {
 				fncUpdatePurchase();
-			});	
-			//배송희망일자 처리
-			$("img[src='../images/ct_icon_date.gif']").on("click",function(){
-			    show_calendar('document.updatePurchase.dlvyDate', $("img[src='../images/ct_icon_date.gif']").val());
-			 });
-			
+			});				
+		});
+		
+		////// 달력 UI 
+		$(function() {
+			$( "#dlvyDate" ).datepicker({				
+					dateFormat: "yy-mm-dd"
+			});
 		});
 
 	</script>
 </head>
 
-<body bgcolor="#ffffff" text="#000000">
+<body >
+	 <jsp:include page="/layout/toolbar.jsp" />
 
-<%-- <form name="updatePurchase" method="post"	action="/purchase/updatePurchase?tranNo=${purchase.tranNo}"> --%>
+	<<!-- nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+						</button>
+						<a class="navbar-brand page-scroll" href="#page-top">Model 2 MVC Shop</a>
+				</div>
+						
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+						    <a class="page-scroll" href="#services">Services</a>
+						</li>
+						<li>
+						    <a class="page-scroll" href="#portfolio">Menu</a>
+						</li>
+						<li>
+							<a class="login"> Login </a>
+						</li>
+						<li>
+							<a class="join">Join </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+ -->
+<div class="container">
+		<div class="page-header">
+	       <h3 class=" text-info">구매정보수정</h3>	       
+	    </div>
+	    
+ <form class="form-horizontal">
+		    <input type="hidden" name="tranNo" value="${purhcase.tranNo}"/>
+			
+			<div class="form-group">
+				<label for="buyerId" class="col-sm-offset-1 col-sm-3 control-label ">구매자아이디</label>
+					 <div class="col-sm-4">
+					 
+						 <input type="text" class="form-control" id="buyerId" name="buyerId" value="${purchase.buyer.userId }">
+			 		</div>
+			</div>
+			
+			<div class="form-group">
+		   		 <label for="paymentOption" class="col-sm-offset-1 col-sm-3 control-label">구매방법</label>
+		    		<div class="col-sm-4">
+		    			<select id="paymentOption" name="paymentOption"  class="form-control">
+		     				 	<option selected="selected" value="1">현금구매</option>
+		     				 	<option value="2">신용구매</option>
+		     			</select>
+		   			 </div>
+		 	 </div>
+		 	 
+				<div class="form-group">
+					<label for="receiverName" class="col-sm-offset-1 col-sm-3 control-label">구매자이름</label>
+		    			<div class="col-sm-4">
+		     				 <input type="text" class="form-control" id="receiverName" name="receiverName" value="${purchase.receiverName}" >
+						</div>
+				</div>
+
+		 	<div class="form-group">
+		   		 <label for="receiverPhone" class="col-sm-offset-1 col-sm-3 control-label">구매자 연락처</label>
+		    		<div class="col-sm-4">
+		    		  <input type="text" class="form-control" id="receiverPhone" name="receiverPhone" value="${purchase.receiverPhone }">
+		   			 </div>
+		 	 </div>
+		 	 
+	 		<div class="form-group">
+		   		 <label for="dlvyAddr" class="col-sm-offset-1 col-sm-3 control-label">구매자주소</label>
+		    		<div class="col-sm-4">
+		    		  <input type="text" class="form-control" id="dlvyAddr" name="dlvyAddr" value="${purchase.dlvyAddr }">
+		   			 </div>
+		 	 </div>
+		 	 
+		 	 		 	 
+	 		<div class="form-group">
+		   		 <label for="dlvyRequest" class="col-sm-offset-1 col-sm-3 control-label">구매요청사항</label>
+		    		<div class="col-sm-4">
+		    		  <input type="text" class="form-control" id="dlvyRequest" name="dlvyRequest" value="${purchase.dlvyRequest }">
+		   			 </div>
+		 	 </div>
+		
+			<div class="form-group">
+		   		 <label for="dlvyDate" class="col-sm-offset-1 col-sm-3 control-label">배송희망일자</label>
+		    		<div class="col-sm-4">
+		    		  <input type="text" class="form-control" id="dlvyDate" name="dlvyDate" readonly>
+		   			 </div>
+		 	 </div>
+		
+		  <div class="form-group">
+		   	 <div class="col-sm-offset-4  col-sm-4 text-center">
+		     	 <button type="button" class="btn btn-primary" id="update" >수 &nbsp;정</button>
+		     	  <button type="button" class="btn btn-primary"  id="cancle">취 &nbsp;소</button><!-- 
+			 		 <a class="btn btn-primary btn" href="#" role="button">취 &nbsp;소</a> -->
+		   	 </div>
+		   	 
+		  </div>
+		</form>		 	 
+	
+	</div>
+
+<%-- 
+ <form name="updatePurchase" method="post"	action="/purchase/updatePurchase?tranNo=${purchase.tranNo}"> 
 <form name="updatePurchase">
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -156,7 +287,7 @@
 			<input type="text" readonly="readonly" name="dlvyDate" class="ct_input_g" 
 						style="width: 100px; height: 19px" maxLength="20"/>
 				<img 	src="../images/ct_icon_date.gif" width="15" height="15"	/>
-<!-- 							onclick="show_calendar('document.updatePurchase.dlvyDate', document.updatePurchase.dlvyDate.value)"/> -->
+							onclick="show_calendar('document.updatePurchase.dlvyDate', document.updatePurchase.dlvyDate.value)"/>
 		</td>
 	</tr>
 	<tr>
@@ -196,6 +327,6 @@
 	</tr>
 </table>
 </form>
-
+--%>
 </body>
 </html>

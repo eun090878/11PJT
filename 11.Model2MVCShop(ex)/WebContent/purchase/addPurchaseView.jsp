@@ -23,7 +23,9 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">   
+   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+    <link href="/css/animate.min.css" rel="stylesheet">
+      
     <!-- Bootstrap Dropdown Hover JS -->
    <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
 	
@@ -57,7 +59,8 @@
 </head>
 
 <body>
-		<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+ <jsp:include page="/layout/toolbar.jsp" /> 
+		<!-- <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -83,7 +86,7 @@
 					</ul>
 				</div>
 			</div>
-		</nav>
+		</nav> -->
 		
 		<div class="container">		
 			<h2 class="bg-primary text-center">상품 등록</h2>			

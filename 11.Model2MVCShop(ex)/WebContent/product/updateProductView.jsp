@@ -13,7 +13,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
 	<link href="/css/creative.css" rel="stylesheet" >		
- 	<link href="/css/animate.min.css" rel="stylesheet">
+
+ 	 <link href="/css/animate.min.css" rel="stylesheet"> 	
 	
 	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
@@ -32,8 +33,6 @@
    	<link rel="stylesheet" href="/resources/demos/style.css"> 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
-   
-	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
 		body {
             padding-top : 100px;
@@ -81,11 +80,8 @@
 		
 		////// 달력 UI 
 		$(function() {
-			$( "#manuDate" ).datepicker(	 {
-				
-					dateFormat: "yy-mm-dd",
-				   /*  monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-				    dayNamesMin: ['일','월','화','수','목','금','토']  */
+			$( "#manuDate" ).datepicker(	{				
+					dateFormat: "yy-mm-dd"
 			});
 		});
 
@@ -95,12 +91,39 @@
 <body>
 
 	 <jsp:include page="/layout/toolbar.jsp" />
-
+	 
+	<!-- <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+						</button>
+						<a class="navbar-brand page-scroll" href="#page-top">Model 2 MVC Shop</a>
+				</div>
+						
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+						    <a class="page-scroll" href="#services">Services</a>
+						</li>
+						<li>
+						    <a class="page-scroll" href="#portfolio">Menu</a>
+						</li>
+						<li>
+							<a class="login"> Login </a>
+						</li>
+						<li>
+							<a class="join">Join </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+ -->
 	<!--  화면구성 div Start /////////////////////////////////////-->
 	<div class="container">
 		<div class="page-header">
-	       <h3 class=" text-info">상품정보수정</h3>
-	       
+	       <h3 class=" text-info">상품정보수정</h3>	       
 	    </div>
 	    
 		    <form class="form-horizontal">

@@ -11,7 +11,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
 	<link href="/css/creative.css" rel="stylesheet" >					
-	<link rel="stylesheet" href="/css/admin.css" type="text/css">		
+<!-- 	<link rel="stylesheet" href="/css/admin.css" type="text/css"> -->
+	 <link href="/css/animate.min.css" rel="stylesheet">			
 	
 	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
@@ -29,6 +30,7 @@
 	<style>
  		body {
             padding-top : 100px;
+            color : white;
         }
      </style>
      
@@ -47,12 +49,11 @@
 	
 	</script>
 	
-
 </head>
 
 <body>
-
-	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+ <jsp:include page="/layout/toolbar.jsp" /> 
+	<!-- <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -79,7 +80,7 @@
 				</div>
 			</div>
 		</nav>
-		
+		 -->
 		<div class="container">
 			<div class="page-header">
 		       <h3 class=" text-info">상품정보조회</h3>

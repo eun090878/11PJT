@@ -16,14 +16,22 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 	<link href="/css/creative.css" rel="stylesheet" >
+	 <link href="/css/animate.min.css" rel="stylesheet">
+	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	<link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   
+    <!-- Bootstrap Dropdown Hover JS -->
+   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+	
 	
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
        body > div.container{
         	/* border: 3px solid #D6CDB7; */
             margin-top: 100px;
+            background-color : rgba(0,0,0,0);
         }
     </style>
     
@@ -158,7 +166,7 @@
 </head >
 
 <body>
-
+	<jsp:include page="/layout/toolbar.jsp" /> 	
 	<!-- ToolBar Start /////////////////////////////////////-->
 <!-- 	<div class="navbar  navbar-default">
         <div class="container">
@@ -166,7 +174,7 @@
    		</div>
    	</div> -->
    	
-   	  	 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+<!--    	  	 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -194,7 +202,7 @@
             </div>
         </div>
     </nav>
-   	
+   	 -->
    	
    	
    	<!-- ToolBar End /////////////////////////////////////-->
@@ -237,7 +245,7 @@
 		  <div class="form-group">
 		    <label for="userName" class="col-sm-offset-1 col-sm-3 control-label">이름</label>
 		    <div class="col-sm-4">
-		      <input type="password" class="form-control" id="userName" name="userName" placeholder="회원이름">
+		      <input type="text" class="form-control" id="userName" name="userName" placeholder="회원이름">
 		    </div>
 		  </div>
 		  
