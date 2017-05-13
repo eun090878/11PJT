@@ -30,7 +30,6 @@
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
        body > div.container{
-        	/* border: 3px solid #D6CDB7; */
             margin-top: 100px;
             background-color : rgba(0,0,0,0);
         }
@@ -167,50 +166,10 @@
 </head >
 
 <body>
+
 	<jsp:include page="/layout/toolbar.jsp" /> 	
-	<!-- ToolBar Start /////////////////////////////////////-->
-<!-- 	<div class="navbar  navbar-default">
-        <div class="container">
-        	<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
-   		</div>
-   	</div> -->
-   	
-<!--    	  	 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Model 2 MVC Shop</a>
-            </div>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Menu</a>
-                    </li>
-                    <li>
-                    	<a class="login"> Login </a>
-                    </li>
-                    <li>
-                    	<a class="join">Join </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-   	 -->
-   	
-   	
-   	<!-- ToolBar End /////////////////////////////////////-->
-
-	<!--  화면구성 div Start /////////////////////////////////////-->
 	<div class="container">
-	
 		<h1 class="bg-primary text-center">회 원 가 입</h1>
 		
 		<!-- form Start /////////////////////////////////////-->
@@ -228,6 +187,13 @@
 					<button type="button" class="btn btn-info">중복확인</button>
 				</div>
 		 </div>
+		 
+		 <div class="form-group">
+			<label for="nickName" class="col-sm-offset-1 col-sm-3 control-label">닉 네 임</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="nickName" name="nickName" >
+		 		</div>
+ 		 </div>
 		  
 		<div class="form-group">
 			<label for="password" class="col-sm-offset-1 col-sm-3 control-label">비밀번호</label>
@@ -247,6 +213,13 @@
 		    <label for="userName" class="col-sm-offset-1 col-sm-3 control-label">이름</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="userName" name="userName" placeholder="회원이름">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="userName" class="col-sm-offset-1 col-sm-3 control-label">성별</label>
+		    <div class="col-sm-4">
+		      <input type="radio" class="form-control" id="gender" name="gender" placeholder="성별">
 		    </div>
 		  </div>
 		  

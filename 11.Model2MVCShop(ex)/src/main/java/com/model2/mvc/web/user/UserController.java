@@ -49,7 +49,7 @@ public class UserController {
 	
 		System.out.println("/user/addUser : GET");
 		
-		return "redirect:/user/addUserView.jsp";
+		return "redirect:/user/addUserView2.jsp";
 	}
 	
 	@RequestMapping( value="addUser", method=RequestMethod.POST )

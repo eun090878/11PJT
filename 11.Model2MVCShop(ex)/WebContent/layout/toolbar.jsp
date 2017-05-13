@@ -16,11 +16,11 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll"  href="/index.jsp">Model2 MVC Shop</a>
+                <a class="navbar-brand page-scroll"  href="/index.jsp" style="margin-left: 0px;">Model2 MVC Shop</a>
             </div>
             
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-hover="dropdown" data-animations="fadeInDownNew fadeInRightNew fadeInUpNew fadeInLeftNew">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 13px;'">
 
 				<c:if test="${empty user}">
 					<li><a class="login"> ·Î±×ÀÎ </a></li>
