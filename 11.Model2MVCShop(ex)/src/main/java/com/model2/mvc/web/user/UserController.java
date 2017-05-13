@@ -125,6 +125,21 @@ public class UserController {
 		return "redirect:/user/loginView.jsp";
 	}
 	
+/*	±‚¡∏Login
+   @RequestMapping( value="login", method=RequestMethod.POST )
+	public String login(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
+		
+		System.out.println("/user/login : POST");
+		//Business Logic
+		User dbUser=userService.getUser(user.getUserId());
+		
+		if( user.getPassword().equals(dbUser.getPassword())){
+			session.setAttribute("user", dbUser);
+		}
+		
+		return "redirect:/index.jsp";
+	}
+	*/
 	@RequestMapping( value="login", method=RequestMethod.POST )
 	public String login(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
 		

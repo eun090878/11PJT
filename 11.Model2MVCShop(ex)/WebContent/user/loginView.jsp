@@ -9,6 +9,14 @@
 <head>
 	<meta charset="EUC-KR">
 	
+	<!-- ///////////// 카카오 계정 연동 ////////////////// -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>	
+	<!-- ////////////////////////////////////////////////// -->
+	
+	
+	
 	<!-- 참조 : http://getbootstrap.com/css/   참조 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -33,6 +41,44 @@
     
     <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
+	
+	// 카카오계정 연동
+	Kakao.init('84c5f6e23594b89cadfb9500086ba376');
+	
+    function loginWithKakao() {
+      // 로그인 창을 띄웁니다.
+      Kakao.Auth.login({
+        success: function(authObj) {
+        	
+         alert("dd :: "+JSON.stringify(authObj));
+         //access_token / token_type / refresh_token / expires_in / scope : account_email profile 출력
+         
+         var accessToken = Kakao.Auth.getAccessToken();
+         Kakao.Auth.setAccessToken(accessToken);
+	         test();
+         
+        },
+        fail: function(err) {
+          alert('error :: '+JSON.stringify(err));s
+        }
+      });
+    };
+	
+    function test() {
+    	Kakao.API.request({
+   			url: '/v1/user/me',	
+			success: function(res) {
+				console.log(res);
+				console.log(res.kaccount_email);
+				console.log(res.properties.nickname);
+				
+			},
+			fail: function(error) {
+				console.log('err:; '+error);
+			}
+     });
+    }
+	///////////////////////////////
 
 		//============= "로그인"  Event 연결 =============
 		$( function() {
@@ -149,7 +195,15 @@
 					      <a class="btn btn-primary btn" href="#" role="button">Join</a>
 					    </div>
 					  </div>
-			
+					  
+				   <div class="form-group">
+				    	<div class="col-sm-offset-4 col-sm-6 text-center">
+					  		<a id="custom-login-btn" href="javascript:loginWithKakao()">
+							<img src="/img/kakao_account_login_btn_medium_narrow_ov.png" width="180"/>							
+							</a>
+						</div>
+					</div>
+					
 					</form>
 			   	 </div>
 			
