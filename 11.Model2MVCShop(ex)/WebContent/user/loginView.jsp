@@ -119,6 +119,14 @@
 					      <a class="btn btn-primary btn" href="#" role="button">Join</a>
 					    </div>
 					  </div>
+					  
+					  <div class="form-group">
+				    	<div class="col-sm-offset-4 col-sm-6 text-center">
+					  		<a id="custom-login-btn" href="javascript:loginWithKakao()">
+							<img src="/img/kakao_account_login_btn_medium_narrow_ov.png" width="180"/>							
+							</a>
+						</div>
+					</div>
 			
 					</form>
 			   	 </div>
