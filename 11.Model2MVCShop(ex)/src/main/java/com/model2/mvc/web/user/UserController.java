@@ -44,12 +44,16 @@ public class UserController {
 	int pageSize;
 	
 	
-	@RequestMapping( value="addUser", method=RequestMethod.GET )
-	public String addUser() throws Exception{
+	@RequestMapping( value="addUser/{userId}", method=RequestMethod.GET )
+	public String addUser( @PathVariable String userId, 
+ 			Model model ) throws Exception{
 	
 		System.out.println("/user/addUser : GET");
+		System.out.println("userId받아오니 :: " + userId);
+		userId = userId.replace(",", ".");
+		model.addAttribute("userId", userId);
 		
-		return "redirect:/user/addUserView.jsp";
+		return "forward:/user/addUserView2.jsp";
 	}
 	
 	@RequestMapping( value="addUser", method=RequestMethod.POST )
