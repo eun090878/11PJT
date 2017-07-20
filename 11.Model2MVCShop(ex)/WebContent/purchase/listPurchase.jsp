@@ -1,82 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
-<title>구매 목록조회</title>
-
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
-	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/creative.min.css" rel="stylesheet">
+		
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	
+	<!-- Bootstrap Dropdown Hover CSS -->
+	<link href="/css/animate.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+	<script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+<!-- 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script> -->
+	
 	<script type="text/javascript">	
 	
-			function fncGetAllList(currentPage){
-			//	document.getElementById("currentPage").value = currentPage;
-			//   	document.detailForm.submit();	
-			   	$('#currentPage').val(currentPage);
-			   	$('form').attr("method", "POST").attr("action", "/purchase/listPurchase?userId=${purchase.buyer.userId}").submit();
-			}
+		function fncGetAllList(currentPage){
+		//	document.getElementById("currentPage").value = currentPage;
+		//   	document.detailForm.submit();	
+		   	$('#currentPage').val(currentPage);
+		   	$('form').attr("method", "POST").attr("action", "/purchase/listPurchase?userId=${purchase.buyer.userId}").submit();
+		}
 			
-			$(function() {
-				
-				//구매정보 확인
-				$(".ct_list_pop td:nth-child(1) span").on("click", function() {
-					alert($(this).attr('tranNo') + " :: tranNo");
-					self.location="/purchase/getPurchase?tranNo="+$(this).attr('tranNo');					
+		$(function() {
+			//구매정보 확인
+			$(".ct_list_pop td:nth-child(1) span").on("click", function() {
+				/* alert($(this).attr('tranNo') + " :: tranNo"); */
+				self.location="/purchase/getPurchase?tranNo="+$(this).attr('tranNo');					
 				});
 				
-				//고객정보 확인
-				$(".ct_list_pop td:nth-child(3) span").on("click", function() {
-//					alert($(this).attr('userId') + " :: userId");
-//					self.location="/user/getUser?userId="+$(this).attr('userId');		
+			//고객정보 확인
+			$(".ct_list_pop td:nth-child(3) span").on("click", function() {
+//				alert($(this).attr('userId') + " :: userId");
+//				self.location="/user/getUser?userId="+$(this).attr('userId');		
 										
-					var userId = $(this).attr('userId').trim();
-					$.ajax( 
-							{
-								url : "/user/getJsonUser/"+userId ,
-								method : "GET" ,
-								dataType : "json" ,
-								headers : {
-									"Accept" : "application/json",
-									"Content-Type" : "application/json"
-								},
-								success : function(JSONData , status) {
+			var userId = $(this).attr('userId').trim();
+			$.ajax( 
+			{
+				url : "/user/getJsonUser/"+userId ,
+				method : "GET" ,
+				dataType : "json" ,
+				headers : {
+					"Accept" : "application/json",
+					"Content-Type" : "application/json"
+				},
+				success : function(JSONData , status) {
 
-									//Debug...
-									//alert(status);
-									//Debug...
-									alert("JSONData : \n"+JSONData);
-									alert( "JSON.stringify(JSONData) : \n"+JSON.stringify(JSONData) );
-									
-									var displayValue = "<h3>"
-																+"아이디 : "+JSONData.user.userId+"<br/>"
-																+"이  름 : "+JSONData.user.userName+"<br/>"
-																+"이메일 : "+JSONData.user.email+"<br/>"
-																+"ROLE : "+JSONData.user.role+"<br/>"
-																+"등록일 : "+JSONData.user.regDate+"<br/>"
-																+"</h3>";
-									//Debug...									
-									//alert(displayValue);
-									$("h3").remove();
-									$( "#"+userId+"" ).html(displayValue);
-								}
-						});
-				});
+					//Debug...
+					//alert(status);
+					//Debug...
+					alert("JSONData : \n"+JSONData);
+					alert( "JSON.stringify(JSONData) : \n"+JSON.stringify(JSONData) );
+					
+					var displayValue = "<h3>"
+												+"아이디 : "+JSONData.user.userId+"<br/>"
+												+"이  름 : "+JSONData.user.userName+"<br/>"
+												+"이메일 : "+JSONData.user.email+"<br/>"
+												+"ROLE : "+JSONData.user.role+"<br/>"
+												+"등록일 : "+JSONData.user.regDate+"<br/>"
+												+"</h3>";
+					//Debug...									
+					//alert(displayValue);
+					$("h3").remove();
+					$( "#"+userId+"" ).html(displayValue);
+				}
+			});
+		});
 				
-				$(".ct_list_pop td:nth-child(11) span").on("click", function() {
-					alert($(this).attr('tranNo') + " :: userId" + $(this).attr('tranCode'));
-					self.location="/purchase/updateTranCode?tranNo="+$(this).attr('tranNo') + "&tranCode=" + $(this).attr('tranCode');					
-				});
-				
-			})
-
+		$(".ct_list_pop td:nth-child(11) span").on("click", function() {
+			alert($(this).attr('tranNo') + " :: userId" + $(this).attr('tranCode'));
+			self.location="/purchase/updateTranCode?tranNo="+$(this).attr('tranNo') + "&tranCode=" + $(this).attr('tranCode');					
+		});
+	});
 	</script>
 </head>
-
-<body bgcolor="#ffffff" text="#000000">
-
-<div style="width: 98%; margin-left: 10px;">
+<body>
+<jsp:include page="/layout/toolbar.jsp" /> 
+<div class="container">
 
 <%-- <form name="detailForm" action="/purchase/listPurchase?userId=${purchase.buyer.userId}" method="post"> --%>
 <form name="detailForm">
@@ -156,7 +163,6 @@
 					</tr>
 					
 					<tr>
-							<!-- <td colspan="11" bgcolor="D6D7D6" height="1"></td> -->
 							<td id="${user.userId}" colspan="11" bgcolor="D6D7D6" height="1"></td>
 					</tr>
 					</c:forEach>
@@ -166,11 +172,10 @@
 	<tr>
 		<td align="center">
 				   <input type="hidden" id="currentPage" name="currentPage" value="${resultPage.currentPage}"/>	
-					<jsp:include page="../common/pageNavigator.jsp"/>	
+					<jsp:include page="../common/pageNavigator_new.jsp"/>	
 		</td>
 	</tr>
 </table>
-<!--  페이지 Navigator 끝 -->
 </form>
 
 </div>

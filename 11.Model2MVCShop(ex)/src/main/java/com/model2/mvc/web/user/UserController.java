@@ -44,16 +44,12 @@ public class UserController {
 	int pageSize;
 	
 	
-	@RequestMapping( value="addUser/{userId}", method=RequestMethod.GET )
-	public String addUser( @PathVariable String userId, 
- 			Model model ) throws Exception{
+	@RequestMapping( value="addUser", method=RequestMethod.GET )
+	public String addUser( ) throws Exception{
 	
 		System.out.println("/user/addUser : GET");
-		System.out.println("userId받아오니 :: " + userId);
-		userId = userId.replace(",", ".");
-		model.addAttribute("userId", userId);
 		
-		return "forward:/user/addUserView2.jsp";
+		return "forward:/user/addUserView.jsp";
 	}
 	
 	@RequestMapping( value="addUser", method=RequestMethod.POST )
@@ -129,12 +125,13 @@ public class UserController {
 		return "redirect:/user/loginView.jsp";
 	}
 	
-/*	기존Login
+//	기존Login
    @RequestMapping( value="login", method=RequestMethod.POST )
 	public String login(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
 		
 		System.out.println("/user/login : POST");
 		//Business Logic
+		
 		User dbUser=userService.getUser(user.getUserId());
 		
 		if( user.getPassword().equals(dbUser.getPassword())){
@@ -143,22 +140,7 @@ public class UserController {
 		
 		return "redirect:/index.jsp";
 	}
-	*/
-	@RequestMapping( value="login", method=RequestMethod.POST )
-	public String login(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
-		
-		System.out.println("/user/login : POST");
-		//Business Logic
-		User dbUser=userService.getUser(user.getUserId());
-		
-		if( user.getPassword().equals(dbUser.getPassword())){
-			session.setAttribute("user", dbUser);
-		}
-		
-		return "redirect:/index.jsp";
-	}
-	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	@RequestMapping( value="jsonLogin", method=RequestMethod.POST )
 	public void jsonLogin(	@RequestBody User user,
 												HttpSession session,

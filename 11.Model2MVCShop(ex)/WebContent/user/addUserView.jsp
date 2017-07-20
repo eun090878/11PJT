@@ -1,33 +1,35 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
 <%@ page pageEncoding="EUC-KR"%>
 
-
 <!DOCTYPE html>
 
 <html lang="ko">
-	
 <head>
 	<meta charset="EUC-KR">
 	
-	<!-- 참조 : http://getbootstrap.com/css/   참조 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/creative.min.css" rel="stylesheet">
 	
 	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-	<link href="/css/creative.css" rel="stylesheet" >
+		
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
-	<!--  ///////////////////////// CSS ////////////////////////// -->
+	<!-- Bootstrap Dropdown Hover CSS -->
+   <link href="/css/animate.min.css" rel="stylesheet">
+   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+	
 	<style>
        body > div.container{
         	/* border: 3px solid #D6CDB7; */
-            margin-top: 100px;
+            margin-top: 70px;
         }
     </style>
     
-     <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
 	
 		//============= "가입"  Event 연결 =============
@@ -38,7 +40,6 @@
 			});
 		});	
 		
-		
 		//============= "취소"  Event 처리 및  연결 =============
 		$(function() {
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
@@ -46,7 +47,6 @@
 				$("form")[0].reset();
 			});
 		});	
-	
 		
 		function fncAddUser() {
 			
@@ -90,7 +90,6 @@
 			
 			$("form").attr("method" , "POST").attr("action" , "/user/addUser").submit();
 		}
-		
 
 		//==>"이메일" 유효성Check  Event 처리 및 연결
 		 $(function() {
@@ -105,7 +104,6 @@
 			});
 			 
 		});	
-		
 		
 	   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	   //==> 주민번호 유효성 check 는 이해정도로....
@@ -140,7 +138,6 @@
 		}
 		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-		 
 		//==>"ID중복확인" Event 처리 및 연결
 		 $(function() {
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
@@ -152,67 +149,26 @@
 											"scrollbars=no,scrolling=no,menubar=no,resizable=no");
 			});
 		});	
-
 	</script>		
+	
+	<style>
+		h3 {
+			color:white;
+		}
+	</style>
     
 </head >
-
 <body>
-
-	<!-- ToolBar Start /////////////////////////////////////-->
-<!-- 	<div class="navbar  navbar-default">
-        <div class="container">
-        	<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
-   		</div>
-   	</div> -->
-   	
-   	  	 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Model 2 MVC Shop</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Menu</a>
-                    </li>
-                    <li>
-                    	<a class="login"> Login </a>
-                    </li>
-                    <li>
-                    	<a class="join">Join </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-   	
-   	
-   	
-   	<!-- ToolBar End /////////////////////////////////////-->
-
-	<!--  화면구성 div Start /////////////////////////////////////-->
+<jsp:include page="/layout/toolbar.jsp" /> 
 	<div class="container">
-	
-		<h1 class="bg-primary text-center">회 원 가 입</h1>
-		
-		<!-- form Start /////////////////////////////////////-->
+		<h3 class="bg text-center">회원가입</h3>
 		<form class="form-horizontal">
-		
 		<div class="form-group">
-			<label for="userId" class="col-sm-offset-1 col-sm-3 control-label">아 이 디</label>
+			<label for="userId" class="col-sm-offset-1 col-sm-3 control-label">아이디</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control" id="userId" name="userId" placeholder="중복확인하세요"  readonly>
 						<span id="helpBlock" class="help-block">
-							<strong class="text-danger">입력전 중복확인 부터..</strong>
+							<strong class="text-danger">중복확인해주세요</strong>
 						</span>
 				</div>
 				<div class="col-sm-3">
@@ -252,7 +208,7 @@
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
+		    <label for="addr" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="addr" name="addr" placeholder="주소">
 		    </div>
@@ -260,7 +216,7 @@
 		  
 		  <div class="form-group">
 		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">휴대전화번호</label>
-		     <div class="col-sm-2">
+		     <div class="col-xs-2">
 		      <select class="form-control" name="phone1" id="phone1">
 				  	<option value="010" >010</option>
 					<option value="011" >011</option>
@@ -269,10 +225,10 @@
 					<option value="019" >019</option>
 				</select>
 		    </div>
-		    <div class="col-sm-2">
+		    <div class="col-sm-1">
 		      <input type="text" class="form-control" id="phone2" name="phone2" placeholder="번호">
 		    </div>
-		    <div class="col-sm-2">
+		    <div class="col-sm-1">
 		      <input type="text" class="form-control" id="phone3" name="phone3" placeholder="번호">
 		    </div>
 		    <input type="hidden" name="phone"  />
@@ -287,16 +243,11 @@
 		  
 			<div class="form-group">
 				<div class="col-sm-offset-4  col-sm-4 text-center">
-					<button type="button" class="btn btn-primary"  >가 &nbsp;입</button>
-						<a class="btn btn-primary btn" href="#" role="button">취&nbsp;소</a>
+					<button type="button" class="btn btn-primary"  >가입</button>
+					<a class="btn btn-primary btn" href="#" role="button">취소</a>
 				</div>
 			</div>
 		</form>
-		<!-- form Start /////////////////////////////////////-->
-		
  	</div>
-	<!--  화면구성 div end /////////////////////////////////////-->
-	
 </body>
-
 </html>

@@ -3,52 +3,39 @@
 
 <html>
 <head>
-<title>구매상세조회</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
-	<link href="/css/creative.css" rel="stylesheet" >		
-	<link rel="stylesheet" href="/css/admin.css" type="text/css">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/creative.min.css" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
-   
-    <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+	<link href="/css/animate.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+	<script src="/javascript/bootstrap-dropdownhover.min.js"></script>
 	
+	<script type="text/javascript">
 
-<script type="text/javascript">
-
-	$(function() {
-		
-		$(".ct_btn01:contains('수정')").on("click", function() {
-			
-			self.location = "/purchase/updatePurchase?tranNo=${purchase.tranNo}";
-			
+		$(function() {
+			$(".ct_btn01:contains('수정')").on("click", function() {
+				self.location = "/purchase/updatePurchase?tranNo=${purchase.tranNo}";
+			});
+	
+			 $( "td.ct_btn01:contains('확인')" ).on("click" , function() {
+				//Debug..
+				//alert(  $( "td.ct_btn01:contains('확인')" ).html() );
+				history.go(-1);
+			});
 		});
-
-		 $( "td.ct_btn01:contains('확인')" ).on("click" , function() {
-			//Debug..
-			//alert(  $( "td.ct_btn01:contains('확인')" ).html() );
-			history.go(-1);
-		});
-			
-	});
-
-
-
 </script>
-
-
 </head>
-
-<body bgcolor="#ffffff" text="#000000">
-
+<body>
+<jsp:include page="/layout/toolbar.jsp" /> 
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="15" height="37">

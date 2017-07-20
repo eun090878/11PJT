@@ -3,11 +3,25 @@
 
 <html>
 <head>
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
-<title>구매정보 수정</title>
-
-	<script type="text/javascript" src="../javascript/calendar.js"></script>
-	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/creative.min.css" rel="stylesheet">
+		
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	
+	<!-- Bootstrap Dropdown Hover CSS -->
+	<link href="/css/animate.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+	<script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/overcast/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
 	<script type="text/javascript">
 
 		function fncUpdatePurchase() {
@@ -33,7 +47,6 @@
 			}
 			
 			$('form').attr("method", "POST"	).attr("action", "/purchase/updatePurchase?tranNo=${purchase.tranNo}").submit();
-			
 		}
 		
 		$(function () {
@@ -48,14 +61,13 @@
 			$("img[src='../images/ct_icon_date.gif']").on("click",function(){
 			    show_calendar('document.updatePurchase.dlvyDate', $("img[src='../images/ct_icon_date.gif']").val());
 			 });
-			
 		});
 
 	</script>
 </head>
 
-<body bgcolor="#ffffff" text="#000000">
-
+<body>
+<jsp:include page="/layout/toolbar.jsp" /> 
 <%-- <form name="updatePurchase" method="post"	action="/purchase/updatePurchase?tranNo=${purchase.tranNo}"> --%>
 <form name="updatePurchase">
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">

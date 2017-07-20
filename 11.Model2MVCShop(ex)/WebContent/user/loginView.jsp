@@ -1,223 +1,163 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
 <%@ page pageEncoding="EUC-KR"%>
-
-
 <!DOCTYPE html>
-
-<html lang="ko">
-	
+<html>
 <head>
 	<meta charset="EUC-KR">
 	
-	<!-- ///////////// 카카오 계정 연동 ////////////////// -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
-	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>	
-	<!-- ////////////////////////////////////////////////// -->
-	
-	
-	
-	<!-- 참조 : http://getbootstrap.com/css/   참조 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/creative.css" rel="stylesheet" >
 	
-	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-	<link href="/css/creative.css" rel="stylesheet" >
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
-	<!--  ///////////////////////// CSS ////////////////////////// -->
-<style>
-        body { 
-           /* border: 3px solid #D6CDB7; */
-            margin-top: 100px;
-        }
-         .col-md-6 {
-           margin:0 auto;
-            float: none;
-        }
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	
+	<link href="/css/animate.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+	<script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+	
+	<style>
+		body { 
+		    margin-top: 100px;
+		    background-color:#f5f5f5;
+		}
+		 .col-md-6 {
+		   margin:0 auto;
+		    float: none;
+		}
+		        
+		.form-signin
+		{
+		    max-width: 330px;
+		    padding: 15px;
+		    margin: 0 auto;
+		}
+		.form-signin .form-control
+		{
+		    position: relative;
+		    font-size: 16px;
+		    height: auto;
+		    padding: 10px;
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: border-box;
+		    box-sizing: border-box;
+		}
+		.form-signin .form-control:focus
+		{
+		    z-index: 2;
+		}
+		.form-signin input[type="text"]
+		{
+		    margin-bottom: 7px;
+		    border-bottom-left-radius: 0;
+		    border-bottom-right-radius: 0;
+		}
+		.form-signin input[type="password"]
+		{
+		    margin-bottom: 10px;
+		    border-top-left-radius: 0;
+		    border-top-right-radius: 0;
+		}
+		.account-wall
+		{
+		    margin-top: 80px;
+		    padding: 40px 0px 20px 0px;
+		 /*      background-color: #ffffff;
+			box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16); */
+		}
+		.login-title
+		{
+		    color: #555;
+		    font-size: 22px;
+		    font-weight: 400;
+		    display: block;
+		}
+		.profile-img
+		{
+		    width: 96px;
+		    height: 96px;
+		    margin: 0 auto 10px;
+		    display: block;
+		    -moz-border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		    border-radius: 50%;
+		}
+		.select-img
+		{
+			border-radius: 50%;
+		    display: block;
+		    height: 75px;
+		    margin: 0 30px 10px;
+		    width: 75px;
+		    -moz-border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		    border-radius: 50%;
+		}
+		.select-name
+		{
+		    display: block;
+		    margin: 30px 10px 10px;
+		}
+		
+		.logo-img
+		{
+		    width: 96px;
+		    height: 96px;
+		    margin: 0 auto 10px;
+		    display: block;
+		    -moz-border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		    border-radius: 50%;
+		}
     </style>
     
-    <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
 	
-	// 카카오계정 연동
-	Kakao.init('84c5f6e23594b89cadfb9500086ba376');
-	
-    function loginWithKakao() {
-      // 로그인 창을 띄웁니다.
-      Kakao.Auth.login({
-        success: function(authObj) {
-        	
-         alert("dd :: "+JSON.stringify(authObj));
-         //access_token / token_type / refresh_token / expires_in / scope : account_email profile 출력
-         
-         var accessToken = Kakao.Auth.getAccessToken();
-         Kakao.Auth.setAccessToken(accessToken);
-	         test();
-         
-        },
-        fail: function(err) {
-          alert('error :: '+JSON.stringify(err));s
-        }
-      });
-    };
-	
-    function test() {
-    	Kakao.API.request({
-   			url: '/v1/user/me',	
-			success: function(res) {
-				console.log(res);
-				console.log(res.kaccount_email);
-				console.log(res.properties.nickname);
-				var userId = res.kaccount_email;
-				var temp=userId.split(".");
-				self.location="/user/addUser/"+temp;
-				
-			},
-			fail: function(error) {
-				console.log('err:; '+error);
-			}
-     });
-    }
-	///////////////////////////////
-
-		//============= "로그인"  Event 연결 =============
 		$( function() {
+			$("#loginId").focus();
 			
-			$("#userId").focus();
-			
-			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-			$("button").on("click" , function() {
-				var id=$("input:text").val();
-				var pw=$("input:password").val();
+			$(".btn-primary.btn-block").on("click" , function() {
+				var id=$("#loginId").val();
+				var pw=$("#loginPassword").val();
 				
 				if(id == null || id.length <1) {
 					alert('ID 를 입력하지 않으셨습니다.');
-					$("#userId").focus();
+					$("#loginId").focus();
 					return;
 				}
 				
 				if(pw == null || pw.length <1) {
 					alert('패스워드를 입력하지 않으셨습니다.');
-					$("#password").focus();
+					$("#loginPassword").focus();
 					return;
 				}
 				
 				$("form").attr("method","POST").attr("action","/user/login").attr("target","_parent").submit();
 			});
 		});	
-		
-		
-		//============= 회원원가입화면이동 =============
-		$( function() {
-			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-			$("a[href='#' ]").on("click" , function() {
-				self.location = "/user/addUser"
-			});
-		});
-		
 	</script>		
 	
 </head>
-
 <body>
-
-	<!-- ToolBar Start /////////////////////////////////////-->
-<!-- 	<div class="navbar  navbar-default">
-        <div class="container">
-        	<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
-   		</div>
-   	</div> -->
-   	 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Model 2 MVC Shop</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Menu</a>
-                    </li>
-                    <li>
-                    	<a class="login"> Login </a>
-                    </li>
-                    <li>
-                    	<a class="join">Join </a>
-                    </li>
-                </ul>
+<jsp:include page="/layout/toolbar.jsp" /> 
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+                <div id="my-tab-content" class="tab-content">
+					<div class="tab-pane active" id="login">
+               			<form class="form-signin" >
+               				<input type="text" class="form-control" name="userId" id="loginId"  placeholder="ID" value="">
+               				<input type="password" class="form-control" name="password" id="loginPassword" placeholder="password" value="">
+               				<button type="submit" class="btn btn-lg btn-primary btn-block" >sign in</button>
+               			</form>
+					</div>
+				</div>
             </div>
         </div>
-    </nav>
-   	<!-- ToolBar End /////////////////////////////////////-->	
-	
-	<!--  화면구성 div Start /////////////////////////////////////-->
-	<div class="container">
-		<!--  row Start /////////////////////////////////////-->
-		<div class="row">
-		
-			<!-- <div class="col-md-6">
-					<img src="/images/logo-spring.png" class="img-rounded" width="100%" />
-			</div> -->
-	   	 	
-	 	 	<div class="col-md-6">
-	 	 	
-		 	 	<!-- <br/><br/> -->
-				
-				<div class="jumbotron">	 	 	
-		 	 		<h1 class="text-center">로 &nbsp;&nbsp;그 &nbsp;&nbsp;인</h1>
-
-			        <form class="form-horizontal">
-		  
-					  <div class="form-group">
-					    <label for="userId" class="col-sm-4 control-label"> I  D</label>
-					    <div class="col-sm-6">
-					      <input type="text" class="form-control" name="userId" id="userId"  placeholder="아이디" >
-					    </div>
-					  </div>
-					  
-					  <div class="form-group">
-					    <label for="password" class="col-sm-4 control-label">Password</label>
-					    <div class="col-sm-6">
-					      <input type="password" class="form-control" name="password" id="password" placeholder="패스워드" >
-					    </div>
-					  </div>
-					  
-					  <div class="form-group">
-					    <div class="col-sm-offset-4 col-sm-6 text-center">
-					      <button type="button" class="btn btn-primary" > Login</button>
-					      <a class="btn btn-primary btn" href="#" role="button">Join</a>
-					    </div>
-					  </div>
-					  
-				   <div class="form-group">
-				    	<div class="col-sm-offset-4 col-sm-6 text-center">
-					  		<a id="custom-login-btn" href="javascript:loginWithKakao()">
-							<img src="/img/kakao_account_login_btn_medium_narrow_ov.png" width="180"/>							
-							</a>
-						</div>
-					</div>
-					
-					</form>
-			   	 </div>
-			
-			</div>
-			
-  	 	</div>
-  	 	<!--  row Start /////////////////////////////////////-->
-  	 	
- 	</div>
- 	<!--  화면구성 div end /////////////////////////////////////-->
-
+    </div>
+</div>
 </body>
-
 </html>
