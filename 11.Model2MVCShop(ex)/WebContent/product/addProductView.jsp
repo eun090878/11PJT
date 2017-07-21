@@ -1,38 +1,34 @@
-<%@ page contentType="text/html; charset=euc-kr" %>
-
+<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page pageEncoding="EUC-KR"%>
 <html>
 <head>
-		<title>상품등록</title>
-		
-		
-		<!-- 참조 : http://getbootstrap.com/css/   참조 -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
-		<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		
-		<link href="/css/creative.css" rel="stylesheet" >				
-		 <link href="/css/animate.min.css" rel="stylesheet">		
-		
-		<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
-		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-		
-		<!-- Bootstrap Dropdown Hover CSS -->
-	   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">	   
-	    <!-- Bootstrap Dropdown Hover JS -->
-	   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
-		
-
-		<script src="http://malsup.github.com/jquery.form.js"></script>				
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/overcast/jquery-ui.css">
-  		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet">	
+	<link href="/css/creative.min.css" rel="stylesheet">
 	
-		<style>
-	       body > div.container{
-	            margin-top: 100px;
-	        }
-  		</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+		
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="/javascript/bootstrap-imageupload.js"></script>
+	<link href="/css/bootstrap-imageupload.css" rel="stylesheet">
+	
+	<!-- Bootstrap Dropdown Hover CSS -->
+   <link href="/css/animate.min.css" rel="stylesheet">
+   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   
+   	<script src="http://malsup.github.com/jquery.form.js"></script>			
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/overcast/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	<style>
+      body > div.container{
+       	/* border: 3px solid #D6CDB7; */
+           margin-top: 100px;
+       }
+	</style>
   		
 	<script type="text/javascript">
 		
@@ -59,27 +55,43 @@
 				return;
 			}		
 		}
-		
-			function fileUpload() {
-				$('detailForm').ajaxForm({			
-					url : "/product/addProduct",
-					enctype : "multipart/form-data",
-					success : function(result) {
-						alert(result);
-					}			
-				});
-				$("#detailForm").submit();
-			}
+		function fileUpload() {
+			$('detailForm').ajaxForm({			
+				url : "/product/addProduct",
+				enctype : "multipart/form-data",
+				success : function(result) {
+					alert(result);
+				}			
+			});
+			$("#detailForm").submit();
+		}
 							
-			$(function() {
-				 $( "button.btn.btn-info" ).on("click" , function() {
+		$(function() {
+			 $( "button.btn.btn-info" ).on("click" , function() {
+					$("form").attr("method", "POST").attr("action", "/product/addProduct").submit();
+			});
+						
+			$("a[href='#']").on("click", function() {
+				$("form")[0].reset();
+			});
 			
-						$("form").attr("method", "POST").attr("action", "/product/addProduct").submit();
-				});
-							
-					$("a[href='#']").on("click", function() {
-						$("form")[0].reset();
-					});
+			 var $imageupload = $('.imageupload');
+			    $imageupload.imageupload();
+			
+			    $('#imageupload-disable').on('click', function() {
+			        $imageupload.imageupload('disable');
+			        $(this).blur();
+			    })
+			
+			    $('#imageupload-enable').on('click', function() {
+			        $imageupload.imageupload('enable');
+			        $(this).blur();
+			    })
+			
+			    $('#imageupload-reset').on('click', function() {
+			        $imageupload.imageupload('reset');
+			        $(this).blur();
+			    }); 
 			});	
 			
 			////// 달력 UI 
@@ -88,44 +100,14 @@
 						dateFormat: "yy-mm-dd"
 				});
 			});
-
 		</script>
 </head>
 
 <body>
- <jsp:include page="/layout/toolbar.jsp" /> 
-	<!-- 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-						</button>
-						<a class="navbar-brand page-scroll" href="#page-top">Model 2 MVC Shop</a>
-				</div>
-						
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-						    <a class="page-scroll" href="#services">Services</a>
-						</li>
-						<li>
-						    <a class="page-scroll" href="#portfolio">Menu</a>
-						</li>
-						<li>
-							<a class="login"> Login </a>
-						</li>
-						<li>
-							<a class="join">Join </a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav> -->
-		
-		
+<jsp:include page="/layout/toolbar.jsp" /> 
 		<div class="container">		
-			<h2 class="bg-primary text-center">상품 등록</h2>			
-			<form class="form-horizontal">
+			<h2 class="text-center">상품등록</h2><br>			
+			<form class="form-horizontal" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상품명</label>
 		    			<div class="col-sm-4">
@@ -159,18 +141,25 @@
 				<div class="form-group">
 					<label for="fileName" class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>
 		    			<div class="col-sm-4">
-		     				 <input type="text" class="form-control" id="fileName" name="fileName" placeholder="이미지등록" >
+		    				<div class="imageupload panel panel-default">  
+		    					<div class="file-tab panel-body" align="center">         
+		    						<label class="btn btn-primary btn-file pull-right">       
+		    							<span>Browse</span>       
+		     				 			<input type="file" class="form-control" id="fileName" name="file" placeholder="이미지등록" >
+		     				 		</label>
+		     				 		<button type="button" class="btn btn-primary pull-right">Remove</button><br/>                   
+		     				 	</div>
+		     				 </div>
 						</div>
-				</div>				
+					</div>	
 				
-				<div class="form-group">
-				<div class="col-sm-offset-4  col-sm-4 text-center">
-					<button type="button" class="btn btn-info"  >등록</button>
-						 <a class="btn btn-info btn" href="#" role="button">취소</a> 
-				</div>
-			</div>
-		</form>	
+					<div class="form-group">
+						<div class="col-sm-offset-4  col-sm-4 text-center">
+							<button type="button" class="btn btn-info"  >등록</button>
+						 	<a class="btn btn-info btn" href="#" role="button">취소</a> 
+						</div>
+					</div>
+			</form>	
 	</div>
-   	
 </body>
 </html>

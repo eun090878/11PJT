@@ -1,144 +1,163 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
 <%@ page pageEncoding="EUC-KR"%>
-
-
 <!DOCTYPE html>
-
-<html lang="ko">
-	
+<html>
 <head>
 	<meta charset="EUC-KR">
 	
-	<!-- 참조 : http://getbootstrap.com/css/   참조 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/creative.css" rel="stylesheet" >
 	
-	 <!-- Bootstrap Core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link href="/css/creative.css" rel="stylesheet" >
-	 <link href="/css/animate.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
-	 <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
-   	<script src="/javascript/bootstrap-dropdownhover.min.js"></script>
-	
+	<link href="/css/animate.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+	<script src="/javascript/bootstrap-dropdownhover.min.js"></script>
 	
 	<style>
-        body {           
-            margin-top: 100px;
-        }
-         .col-md-6 {
-           margin:0 auto;
-            float: none;
-        }
+		body { 
+		    margin-top: 100px;
+		    background-color:#f5f5f5;
+		}
+		 .col-md-6 {
+		   margin:0 auto;
+		    float: none;
+		}
+		        
+		.form-signin
+		{
+		    max-width: 330px;
+		    padding: 15px;
+		    margin: 0 auto;
+		}
+		.form-signin .form-control
+		{
+		    position: relative;
+		    font-size: 16px;
+		    height: auto;
+		    padding: 10px;
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: border-box;
+		    box-sizing: border-box;
+		}
+		.form-signin .form-control:focus
+		{
+		    z-index: 2;
+		}
+		.form-signin input[type="text"]
+		{
+		    margin-bottom: 7px;
+		    border-bottom-left-radius: 0;
+		    border-bottom-right-radius: 0;
+		}
+		.form-signin input[type="password"]
+		{
+		    margin-bottom: 10px;
+		    border-top-left-radius: 0;
+		    border-top-right-radius: 0;
+		}
+		.account-wall
+		{
+		    margin-top: 80px;
+		    padding: 40px 0px 20px 0px;
+		 /*      background-color: #ffffff;
+			box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16); */
+		}
+		.login-title
+		{
+		    color: #555;
+		    font-size: 22px;
+		    font-weight: 400;
+		    display: block;
+		}
+		.profile-img
+		{
+		    width: 96px;
+		    height: 96px;
+		    margin: 0 auto 10px;
+		    display: block;
+		    -moz-border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		    border-radius: 50%;
+		}
+		.select-img
+		{
+			border-radius: 50%;
+		    display: block;
+		    height: 75px;
+		    margin: 0 30px 10px;
+		    width: 75px;
+		    -moz-border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		    border-radius: 50%;
+		}
+		.select-name
+		{
+		    display: block;
+		    margin: 30px 10px 10px;
+		}
+		
+		.logo-img
+		{
+		    width: 96px;
+		    height: 96px;
+		    margin: 0 auto 10px;
+		    display: block;
+		    -moz-border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		    border-radius: 50%;
+		}
     </style>
     
-    <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
-
-		//============= "로그인"  Event 연결 =============
+	
 		$( function() {
+			$("#loginId").focus();
 			
-			$("#userId").focus();
-			
-			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-			$("button").on("click" , function() {
-				var id=$("input:text").val();
-				var pw=$("input:password").val();
+			$(".btn-primary.btn-block").on("click" , function() {
+				var id=$("#loginId").val();
+				var pw=$("#loginPassword").val();
 				
 				if(id == null || id.length <1) {
 					alert('ID 를 입력하지 않으셨습니다.');
-					$("#userId").focus();
+					$("#loginId").focus();
 					return;
 				}
 				
 				if(pw == null || pw.length <1) {
 					alert('패스워드를 입력하지 않으셨습니다.');
-					$("#password").focus();
+					$("#loginPassword").focus();
 					return;
 				}
 				
 				$("form").attr("method","POST").attr("action","/user/login").attr("target","_parent").submit();
 			});
 		});	
-		
-		
-		//============= 회원원가입화면이동 =============
-		$( function() {
-			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-			$("a[href='#' ]").on("click" , function() {
-				self.location = "/user/addUser"
-			});
-		});
-		
 	</script>		
 	
 </head>
-
 <body>
-
-	<jsp:include page="/layout/toolbar.jsp" /> 	
-
-	<!--  화면구성 div Start /////////////////////////////////////-->
-	<div class="container">
-		<!--  row Start /////////////////////////////////////-->
-		<div class="row">
-		
-			<!-- <div class="col-md-6">
-					<img src="/images/logo-spring.png" class="img-rounded" width="100%" />
-			</div> -->
-	   	 	
-	 	 	<div class="col-md-6">
-	 	 	
-		 	 	<!-- <br/><br/> -->
-				
-				<div class="jumbotron">	 	 	
-		 	 		<h1 class="text-center">로 &nbsp;&nbsp;그 &nbsp;&nbsp;인</h1>
-
-			        <form class="form-horizontal">
-		  
-					  <div class="form-group">
-					    <label for="userId" class="col-sm-4 control-label"> I  D</label>
-					    <div class="col-sm-6">
-					      <input type="text" class="form-control" name="userId" id="userId"  placeholder="아이디" >
-					    </div>
-					  </div>
-					  
-					  <div class="form-group">
-					    <label for="password" class="col-sm-4 control-label">Password</label>
-					    <div class="col-sm-6">
-					      <input type="password" class="form-control" name="password" id="password" placeholder="패스워드" >
-					    </div>
-					  </div>
-					  
-					  <div class="form-group">
-					    <div class="col-sm-offset-4 col-sm-6 text-center">
-					      <button type="button" class="btn btn-primary" > Login</button>
-					      <a class="btn btn-primary btn" href="#" role="button">Join</a>
-					    </div>
-					  </div>
-					  
-					  <div class="form-group">
-				    	<div class="col-sm-offset-4 col-sm-6 text-center">
-					  		<a id="custom-login-btn" href="javascript:loginWithKakao()">
-							<img src="/img/kakao_account_login_btn_medium_narrow_ov.png" width="180"/>							
-							</a>
-						</div>
+<jsp:include page="/layout/toolbar.jsp" /> 
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+                <div id="my-tab-content" class="tab-content">
+					<div class="tab-pane active" id="login">
+               			<form class="form-signin" >
+               				<input type="text" class="form-control" name="userId" id="loginId"  placeholder="ID" value="">
+               				<input type="password" class="form-control" name="password" id="loginPassword" placeholder="password" value="">
+               				<button type="submit" class="btn btn-lg btn-primary btn-block" >sign in</button>
+               			</form>
 					</div>
-			
-					</form>
-			   	 </div>
-			
-			</div>
-			
-  	 	</div>
-  	 	<!--  row Start /////////////////////////////////////-->
-  	 	
- 	</div>
- 	<!--  화면구성 div end /////////////////////////////////////-->
-
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
-
 </html>

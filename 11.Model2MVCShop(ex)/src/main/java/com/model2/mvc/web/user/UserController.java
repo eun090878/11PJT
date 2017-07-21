@@ -45,11 +45,11 @@ public class UserController {
 	
 	
 	@RequestMapping( value="addUser", method=RequestMethod.GET )
-	public String addUser() throws Exception{
+	public String addUser( ) throws Exception{
 	
 		System.out.println("/user/addUser : GET");
 		
-		return "redirect:/user/addUserView2.jsp";
+		return "forward:/user/addUserView.jsp";
 	}
 	
 	@RequestMapping( value="addUser", method=RequestMethod.POST )
@@ -125,11 +125,13 @@ public class UserController {
 		return "redirect:/user/loginView.jsp";
 	}
 	
-	@RequestMapping( value="login", method=RequestMethod.POST )
+//	±‚¡∏Login
+   @RequestMapping( value="login", method=RequestMethod.POST )
 	public String login(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
 		
 		System.out.println("/user/login : POST");
 		//Business Logic
+		
 		User dbUser=userService.getUser(user.getUserId());
 		
 		if( user.getPassword().equals(dbUser.getPassword())){
@@ -138,8 +140,7 @@ public class UserController {
 		System.out.println("dddddddddddddddddd"+session.getAttribute("user"));
 		return "redirect:/index.jsp";
 	}
-	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	@RequestMapping( value="jsonLogin", method=RequestMethod.POST )
 	public void jsonLogin(	@RequestBody User user,
 												HttpSession session,
